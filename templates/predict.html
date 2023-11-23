@@ -1,0 +1,80 @@
+{% extends 'base/base.html' %}
+
+{% block styles %}
+    <style>
+        .spinner {
+            --d: 24.6px;
+            width: 4.5px;
+            height: 4.5px;
+            border-radius: 50%;
+            color: #0F60ED;
+            box-shadow: calc(1*var(--d))      calc(0*var(--d))     0 0,
+                   calc(0.707*var(--d))  calc(0.707*var(--d)) 0 1.1px,
+                   calc(0*var(--d))      calc(1*var(--d))     0 2.2px,
+                   calc(-0.707*var(--d)) calc(0.707*var(--d)) 0 3.4px,
+                   calc(-1*var(--d))     calc(0*var(--d))     0 4.5px,
+                   calc(-0.707*var(--d)) calc(-0.707*var(--d))0 5.6px,
+                   calc(0*var(--d))      calc(-1*var(--d))    0 6.7px;
+            animation: spinner-a90wxe 1s infinite steps(8);
+         }
+
+         #result h3 {
+            font-size: 1.5em;
+         }
+         
+         @keyframes spinner-a90wxe {
+            100% {
+               transform: rotate(1turn);
+            }
+        }
+    </style>
+{% endblock styles %}
+
+{% block main %}
+    <div class="slider-area2">
+        <div class="slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap hero-cap2 text-center">
+                            <h2>Predict</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="contact-section">
+        <div class="container">
+            <label for="imageInput" style="width: 100%;" id="select" class="d-grid btn header-btn">
+                Select the image
+            </label>
+
+            <input hidden type="file" name="image" id="imageInput">
+
+            <div class="mt-3 d-flex flex-column align-content-center justify-content-center ">
+                <img style="width: 300px; margin-left: 400px;" id="image"  src="" alt="">
+
+                <button id="submit" class="mt-4 btn header-btn">
+                    Predict
+                </button>
+
+            </div>
+
+            <div class="my-5 d-flex justify-content-center">
+                <div id="spinner" class="spinner"></div>
+            </div>
+
+            <div style="font-size: 1.5rem;" class="text-center mt-3" id="result">
+                
+            </div>
+
+        </div>
+    </section>
+
+{% endblock main %}
+
+{% block scripts %}
+    <script src="static/js/predict.js"></script>
+{% endblock scripts %}
